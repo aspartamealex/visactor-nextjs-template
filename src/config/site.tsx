@@ -1,4 +1,13 @@
-import { Gauge, type LucideIcon, MessagesSquare } from "lucide-react";
+import { 
+  BarChart3, 
+  ClipboardList, 
+  FileText, 
+  Home, 
+  LayoutDashboard, 
+  MessageSquare, 
+  type LucideIcon, 
+  Users 
+} from "lucide-react";
 
 export type SiteConfig = typeof siteConfig;
 export type Navigation = {
@@ -8,19 +17,39 @@ export type Navigation = {
 };
 
 export const siteConfig = {
-  title: "VisActor Next Template",
-  description: "Template for VisActor and Next.js",
+  title: "Strata Management Dashboard",
+  description: "Dashboard for strata management",
 };
 
 export const navigations: Navigation[] = [
   {
-    icon: Gauge,
+    icon: LayoutDashboard,
     name: "Dashboard",
     href: "/",
   },
   {
-    icon: MessagesSquare,
-    name: "Ticket",
-    href: "/ticket",
+    icon: Users,
+    name: "Owners Overview",
+    href: "/owners",
+  },
+  {
+    icon: FileText,
+    name: "Insurance & Levies",
+    href: "/insurance",
+  },
+  {
+    icon: ClipboardList,
+    name: "Requests",
+    href: "/requests",
+  },
+  {
+    icon: BarChart3,
+    name: "Strata Committees",
+    href: "/committees",
+  },
+  {
+    icon: MessageSquare,
+    name: "Manage Announcements",
+    href: "/announcements",
   },
 ];

@@ -1,22 +1,17 @@
 export const metrics = [
   {
-    title: "Created Tickets",
-    value: "24,208",
-    change: -0.05,
+    title: "Current Owners",
+    value: "325",
+    change: 0.03,
   },
   {
-    title: "Unsolved Tickets",
-    value: "4,564",
+    title: "Insuranced Owners",
+    value: "73%",
     change: 0.02,
   },
   {
-    title: "Resolved Tickets",
-    value: "18,208",
-    change: 0.08,
-  },
-  {
-    title: "Average First Time Reply",
-    value: "12:01 min",
-    change: 0.08,
+    title: "Owners' Levies Paid",
+    value: "90%",
+    change: -0.01,
   },
 ];

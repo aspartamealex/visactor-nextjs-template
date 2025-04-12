@@ -9,3 +9,9 @@ export type TicketMetric = {
   type: "created" | "resolved";
   count: number;
 };
+
+export type FundMetric = {
+  date: string;
+  type: "income" | "outcome";
+  amount: number;
+};

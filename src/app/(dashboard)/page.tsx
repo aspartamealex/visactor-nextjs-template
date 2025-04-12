@@ -1,9 +1,8 @@
 import {
-  AverageTicketsCreated,
-  Conversions,
+  Announcements,
   CustomerSatisfication,
+  FundBalance,
   Metrics,
-  TicketByChannels,
 } from "@/components/chart-blocks";
 import Container from "@/components/container";
 
@@ -13,16 +12,13 @@ export default function Home() {
       <Metrics />
       <div className="grid grid-cols-1 divide-y border-b border-border laptop:grid-cols-3 laptop:divide-x laptop:divide-y-0 laptop:divide-border">
         <Container className="py-4 laptop:col-span-2">
-          <AverageTicketsCreated />
+          <FundBalance />
         </Container>
         <Container className="py-4 laptop:col-span-1">
-          <Conversions />
+          <Announcements />
         </Container>
       </div>
-      <div className="grid grid-cols-1 divide-y border-b border-border laptop:grid-cols-2 laptop:divide-x laptop:divide-y-0 laptop:divide-border">
-        <Container className="py-4 laptop:col-span-1">
-          <TicketByChannels />
-        </Container>
+      <div className="grid grid-cols-1 divide-y border-b border-border laptop:grid-cols-1 laptop:divide-x laptop:divide-y-0 laptop:divide-border">
         <Container className="py-4 laptop:col-span-1">
           <CustomerSatisfication />
         </Container>

@@ -7,8 +7,8 @@ export default function DashboardLayout({
 }) {
   return (
     <>
-      <TopNav title="Dashboard" />
+      <TopNav title="" />
       <main>{children}</main>
     </>
-  );
+  ); 
 }
