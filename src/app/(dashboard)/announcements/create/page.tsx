@@ -8,29 +8,19 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { ArrowLeft } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { Label } from "@/components/ui/label";
 
 export default function CreateAnnouncement() {
   const router = useRouter();
-  const [formData, setFormData] = useState({
-    title: "",
-    content: "",
-    people: "Residents",
-  });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handlePeopleChange = (value: string) => {
-    setFormData((prev) => ({ ...prev, people: value }));
-  };
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const [date, setDate] = useState("");
+  const [people, setPeople] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically send the data to your backend
-    console.log("Submitting announcement:", formData);
-    // Redirect back to announcements page
+    // In a real application, this would call an API to create the announcement
+    // For now, we'll just navigate back to the announcements page
     router.push("/announcements");
   };
 
@@ -55,51 +45,49 @@ export default function CreateAnnouncement() {
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-2">
-              <label htmlFor="title" className="text-sm font-medium">
-                Title
-              </label>
+              <Label htmlFor="title">Title</Label>
               <Input
                 id="title"
-                name="title"
-                value={formData.title}
-                onChange={handleChange}
-                placeholder="Enter announcement title"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
                 required
               />
             </div>
             
             <div className="space-y-2">
-              <label htmlFor="content" className="text-sm font-medium">
-                Content
-              </label>
+              <Label htmlFor="content">Content</Label>
               <Textarea
                 id="content"
-                name="content"
-                value={formData.content}
-                onChange={handleChange}
-                placeholder="Enter announcement content"
+                value={content}
+                onChange={(e) => setContent(e.target.value)}
+                required
                 rows={6}
+              />
+            </div>
+            
+            <div className="space-y-2">
+              <Label htmlFor="date">Date</Label>
+              <Input
+                id="date"
+                type="date"
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
                 required
               />
             </div>
             
             <div className="space-y-2">
-              <label htmlFor="people" className="text-sm font-medium">
-                People
-              </label>
-              <Select 
-                value={formData.people} 
-                onValueChange={handlePeopleChange}
-              >
-                <SelectTrigger>
+              <Label htmlFor="people">People</Label>
+              <Select value={people} onValueChange={setPeople}>
+                <SelectTrigger id="people">
                   <SelectValue placeholder="Select people" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="Committee">Committee</SelectItem>
+                  <SelectItem value="All Residents">All Residents</SelectItem>
                   <SelectItem value="Owners">Owners</SelectItem>
+                  <SelectItem value="Committee">Committee</SelectItem>
                   <SelectItem value="Staff">Staff</SelectItem>
-                  <SelectItem value="Residents">Residents</SelectItem>
-                  <SelectItem value="Visitors">Visitors</SelectItem>
+                  <SelectItem value="Residents with Parking">Residents with Parking</SelectItem>
                 </SelectContent>
               </Select>
             </div>
