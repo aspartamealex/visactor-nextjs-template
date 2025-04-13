@@ -19,11 +19,11 @@ export const fundBalance = [
   { date: "2024-06", income: 88000, outcome: 75000 },
   { date: "2024-07", income: 82000, outcome: 73000 },
   { date: "2024-08", income: 91000, outcome: 78000 },
-  { date: "2024-09", income: 86000, outcome: 76000 },
+  { date: "2024-09", income: 99000, outcome: 84000 },
   { date: "2024-10", income: 95000, outcome: 82000 },
   { date: "2024-11", income: 89000, outcome: 80000 },
   { date: "2024-12", income: 98000, outcome: 85000 },
   { date: "2025-01", income: 92000, outcome: 81000 },
   { date: "2025-02", income: 101000, outcome: 73000 },
-  { date: "2025-03", income: 96000, outcome: 83000 },
+  { date: "2025-03", income: 96000, outcome: 90000 },
 ]; 

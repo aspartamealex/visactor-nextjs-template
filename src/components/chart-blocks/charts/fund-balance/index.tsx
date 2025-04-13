@@ -27,7 +27,7 @@ export default function FundBalance() {
   return (
     <section className="flex h-full flex-col gap-2">
       <div className="flex flex-wrap items-start justify-between gap-4">
-        <ChartTitle title="Fund Balance" icon={DollarSign} />
+        <ChartTitle title="Committee Fund Balance" icon={DollarSign} />
         <DatePickerWithRange className="" />
       </div>
       <div className="flex flex-wrap">

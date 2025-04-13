@@ -1,103 +1,143 @@
 "use client";
 
 import { useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { ArrowLeft } from "lucide-react";
-import { useRouter } from "next/navigation";
 import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
-export default function CreateAnnouncement() {
+interface CreateAnnouncementForm 
+{
+  title: string;
+  content: string;
+  date: string;
+  people: string;
+}
+
+export default function CreateAnnouncement() 
+{
   const router = useRouter();
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
-  const [date, setDate] = useState("");
-  const [people, setPeople] = useState("");
+  
+  // Get today's date in YYYY-MM-DD format for the date input
+  const today = new Date();
+  const formattedToday = today.toISOString().split('T')[0];
+  
+  const [formData, setFormData] = useState<CreateAnnouncementForm>({
+    title: "",
+    content: "",
+    date: formattedToday,
+    people: "All"
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // Convert YYYY-MM-DD to dd/mm/yyyy for API
+  const formatDateForAPI = (dateStr: string) => 
+  {
+    const [year, month, day] = dateStr.split('-');
+    return `${day}/${month}/${year}`;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => 
+  {
     e.preventDefault();
-    // In a real application, this would call an API to create the announcement
-    // For now, we'll just navigate back to the announcements page
-    router.push("/announcements");
+    setIsSubmitting(true);
+
+    try 
+    {
+      const response = await fetch('/api/announcements', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          date: formatDateForAPI(formData.date)
+        }),
+      });
+
+      if (!response.ok) 
+      {
+        throw new Error('Failed to create announcement');
+      }
+
+      router.push('/announcements');
+    } 
+    catch (error) 
+    {
+      console.error('Error creating announcement:', error);
+      setIsSubmitting(false);
+    }
   };
 
   return (
-    <div className="container mx-auto py-6">
-      <div className="flex items-center mb-6">
-        <Button 
-          variant="ghost" 
-          className="mr-2" 
-          onClick={() => router.push("/announcements")}
-        >
-          <ArrowLeft className="h-4 w-4 mr-2" />
-          Back to Announcements
-        </Button>
-        <h1 className="text-2xl font-bold">Create New Announcement</h1>
-      </div>
-      
-      <Card>
-        <CardHeader>
-          <CardTitle>Announcement Details</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="space-y-2">
-              <Label htmlFor="title">Title</Label>
-              <Input
-                id="title"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                required
-              />
-            </div>
-            
-            <div className="space-y-2">
-              <Label htmlFor="content">Content</Label>
-              <Textarea
-                id="content"
-                value={content}
-                onChange={(e) => setContent(e.target.value)}
-                required
-                rows={6}
-              />
-            </div>
-            
-            <div className="space-y-2">
-              <Label htmlFor="date">Date</Label>
-              <Input
-                id="date"
-                type="date"
-                value={date}
-                onChange={(e) => setDate(e.target.value)}
-                required
-              />
-            </div>
-            
-            <div className="space-y-2">
-              <Label htmlFor="people">People</Label>
-              <Select value={people} onValueChange={setPeople}>
-                <SelectTrigger id="people">
-                  <SelectValue placeholder="Select people" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="All Residents">All Residents</SelectItem>
-                  <SelectItem value="Owners">Owners</SelectItem>
-                  <SelectItem value="Committee">Committee</SelectItem>
-                  <SelectItem value="Staff">Staff</SelectItem>
-                  <SelectItem value="Residents with Parking">Residents with Parking</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-            
-            <div className="flex justify-end">
-              <Button type="submit">Create Announcement</Button>
-            </div>
-          </form>
-        </CardContent>
-      </Card>
+    <div className="p-6">
+      <h1 className="text-2xl font-bold mb-6">Create Announcement</h1>
+      <form onSubmit={handleSubmit} className="space-y-6 max-w-2xl">
+        <div className="space-y-2">
+          <Label htmlFor="title">Title</Label>
+          <Input
+            id="title"
+            value={formData.title}
+            onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+            required
+          />
+        </div>
+
+        <div className="space-y-2">
+          <Label htmlFor="content">Content</Label>
+          <Textarea
+            id="content"
+            value={formData.content}
+            onChange={(e) => setFormData({ ...formData, content: e.target.value })}
+            required
+            rows={5}
+          />
+        </div>
+
+        <div className="space-y-2">
+          <Label htmlFor="date">Date</Label>
+          <Input
+            id="date"
+            type="date"
+            value={formData.date}
+            onChange={(e) => setFormData({ ...formData, date: e.target.value })}
+            required
+          />
+        </div>
+
+        <div className="space-y-2">
+          <Label htmlFor="people">For</Label>
+          <Select
+            value={formData.people}
+            onValueChange={(value) => setFormData({ ...formData, people: value })}
+          >
+            <SelectTrigger>
+              <SelectValue placeholder="Select People" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="All">All</SelectItem>
+              <SelectItem value="Owners">Owners</SelectItem>
+              <SelectItem value="Committee">Committee</SelectItem>
+              <SelectItem value="Staff">Staff</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+
+        <div className="flex gap-4">
+          <Button type="submit" disabled={isSubmitting}>
+            {isSubmitting ? "Creating..." : "Create Announcement"}
+          </Button>
+          <Button
+            type="button"
+            variant="outline"
+            onClick={() => router.push("/announcements")}
+          >
+            Cancel
+          </Button>
+        </div>
+      </form>
     </div>
   );
 } 

@@ -1,3 +1,5 @@
+"use client"
+
 import {
   Announcements,
   CustomerSatisfication,
@@ -6,7 +8,8 @@ import {
 } from "@/components/chart-blocks";
 import Container from "@/components/container";
 
-export default function Home() {
+export default function Dashboard() 
+{
   return (
     <div>
       <Metrics />
@@ -24,5 +27,5 @@ export default function Home() {
         </Container>
       </div>
     </div>
-  );
+  )
 }

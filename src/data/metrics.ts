@@ -12,6 +12,6 @@ export const metrics = [
   {
     title: "Owners' Levies Paid",
     value: "90%",
-    change: -0.01,
+    change: -0.09,
   },
 ];
