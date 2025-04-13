@@ -43,7 +43,7 @@ export const navigations: Navigation[] = [
     href: "/requests",
   },
   {
-    icon: BarChart3,
+    icon: Users,
     name: "Strata Committees",
     href: "/committees",
   },
