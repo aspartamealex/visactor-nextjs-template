@@ -1,10 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-// ✅ Use 'nodejs' to switch to a regular Serverless Function
-export const config = {
-  runtime: 'nodejs',
-  regions: ['syd1'], // ✅ Force deploy to Sydney region
-};
+export const runtime = 'edge'; //Edge Function
 
 function getGreeting(hour: number): string {
   if (hour >= 5 && hour < 12) return 'Good Morning';
@@ -15,27 +11,42 @@ function getGreeting(hour: number): string {
 
 export async function GET(request: NextRequest) {
   try {
-    const now = new Date();
-    const hour = now.getHours();
-    const greeting = getGreeting(hour);
-    const role = 'Member of the Strata Committee'; // This could be dynamic in the future
+    const timezone = request.headers.get('x-timezone') || 'Australia/Sydney';
 
-    return NextResponse.json({
-      greeting: `${greeting}, ${role}!`,
-      region: 'syd1',
-      localTime: now.toLocaleTimeString(),
-      hour: hour,
+    // Get the current time in the selected timezone using `Intl.DateTimeFormat`
+    const formatter = new Intl.DateTimeFormat('en-AU', {
+      hour: 'numeric',
+      minute: 'numeric',
+      second: 'numeric',
+      hour12: false,
+      timeZone: timezone,
     });
-  } catch (error) {
-    const hour = new Date().getHours();
+
+    const parts = formatter.formatToParts(new Date());
+    const hour = Number(parts.find((p) => p.type === 'hour')?.value ?? 12);
+
+    const now = new Date().toLocaleTimeString('en-AU', { timeZone: timezone });
+
     const greeting = getGreeting(hour);
     const role = 'Member of the Strata Committee';
 
     return NextResponse.json({
       greeting: `${greeting}, ${role}!`,
-      region: 'fallback',
-      localTime: new Date().toLocaleTimeString(),
-      hour: hour,
+      timezone,
+      localTime: now,
+      hour,
+    });
+  } catch (error) {
+    const now = new Date();
+    const hour = now.getHours();
+    const greeting = getGreeting(hour);
+    const role = 'Member of the Strata Committee';
+
+    return NextResponse.json({
+      greeting: `${greeting}, ${role}!`,
+      timezone: 'fallback',
+      localTime: now.toLocaleTimeString(),
+      hour,
     });
   }
 }
