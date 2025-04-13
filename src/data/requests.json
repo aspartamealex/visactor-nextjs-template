@@ -1,0 +1,84 @@
+{
+  "requests": [
+    {
+      "id": 1,
+      "title": "Maintenance Request",
+      "requester": "John Smith",
+      "unit": "A-101",
+      "status": "Pending",
+      "date": "2025-04-12"
+    },
+    {
+      "id": 2,
+      "title": "Complaint",
+      "requester": "Sarah Johnson",
+      "unit": "A-112",
+      "status": "In Progress",
+      "date": "2025-04-05"
+    },
+    {
+      "id": 3,
+      "title": "Permission Request",
+      "requester": "Michael Brown",
+      "unit": "A-301",
+      "status": "Completed",
+      "date": "2025-03-28"
+    },
+    {
+      "id": 4,
+      "title": "Maintenance Request",
+      "requester": "Emily Davis",
+      "unit": "B-201",
+      "status": "Completed",
+      "date": "2025-03-20"
+    },
+    {
+      "id": 5,
+      "title": "Complaint",
+      "requester": "David Wilson",
+      "unit": "B-212",
+      "status": "In Progress",
+      "date": "2025-03-31"
+    },
+    {
+      "id": 6,
+      "title": "Permission Request",
+      "requester": "Lisa Anderson",
+      "unit": "B-113",
+      "status": "Rejected",
+      "date": "2025-03-15"
+    },
+    {
+      "id": 7,
+      "title": "Maintenance Request",
+      "requester": "Robert Taylor",
+      "unit": "C-301",
+      "status": "In Progress",
+      "date": "2025-04-08"
+    },
+    {
+      "id": 8,
+      "title": "Complaint",
+      "requester": "Jennifer Martinez",
+      "unit": "C-302",
+      "status": "In Progress",
+      "date": "2025-04-12"
+    },
+    {
+      "id": 9,
+      "title": "Permission Request",
+      "requester": "William Thomas",
+      "unit": "C-312",
+      "status": "Completed",
+      "date": "2025-04-01"
+    },
+    {
+      "id": 10,
+      "title": "Maintenance Request",
+      "requester": "Patricia Garcia",
+      "unit": "A-403",
+      "status": "Completed",
+      "date": "2025-03-18"
+    }
+  ]
+}
