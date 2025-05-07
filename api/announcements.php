@@ -83,8 +83,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET')
     } 
     else 
     {
-        $query = "SELECT * FROM announcements ORDER BY date DESC";
-        $result = $db->query($query);
+        $query = "SELECT id, title, content, date, people FROM announcements ORDER BY date DESC";
+        $stmt = $db->prepare($query);
+        if (!$stmt) 
+        {
+            error_log("Prepare failed: " . $db->error);
+            http_response_code(500);
+            echo json_encode(['error' => 'Failed to prepare statement']);
+            exit;
+        }
+        
+        if (!$stmt->execute()) 
+        {
+            error_log("Execute failed: " . $stmt->error);
+            http_response_code(500);
+            echo json_encode(['error' => 'Failed to execute statement']);
+            exit;
+        }
+        
+        $result = $stmt->get_result();
         $announcements = [];
         
         while ($row = $result->fetch_assoc()) 
@@ -92,10 +109,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET')
             $announcements[] = $row;
         }
         
-        // Debug log
-        error_log("Announcements data: " . print_r($announcements, true));
-        
-        // Return the data in the expected format
         echo json_encode(['announcements' => $announcements]);
     }
 } 
