@@ -38,8 +38,7 @@ export default function AnnouncementsPage()
             }
             const data = await response.json();
             console.log("API Response:", data);
-            console.log("Is Array?", Array.isArray(data));
-            setAnnouncements(Array.isArray(data) ? data : []);
+            setAnnouncements(data.announcements || []);
         } 
         catch (err) 
         {

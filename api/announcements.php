@@ -69,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET')
         
         if ($result->num_rows === 1) 
         {
-            echo json_encode($result->fetch_assoc());
+            echo json_encode(['announcements' => [$result->fetch_assoc()]]);
         } 
         else 
         {
@@ -91,7 +91,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET')
         // Debug log
         error_log("Announcements data: " . print_r($announcements, true));
         
-        echo json_encode($announcements);
+        // Return the data in the expected format
+        echo json_encode(['announcements' => $announcements]);
     }
 } 
 else if ($_SERVER['REQUEST_METHOD'] === 'POST') 
