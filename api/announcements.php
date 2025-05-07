@@ -83,6 +83,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET')
     } 
     else 
     {
+        // First get total count
+        $countQuery = "SELECT COUNT(*) as total FROM announcements";
+        $countResult = $db->query($countQuery);
+        $totalCount = $countResult->fetch_assoc()['total'];
+        
+        // Then get all announcements
         $query = "SELECT id, title, content, date, people FROM announcements ORDER BY date DESC";
         $stmt = $db->prepare($query);
         if (!$stmt) 
@@ -109,7 +115,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET')
             $announcements[] = $row;
         }
         
-        echo json_encode(['announcements' => $announcements]);
+        echo json_encode([
+            'total' => $totalCount,
+            'announcements' => $announcements
+        ]);
     }
 } 
 else if ($_SERVER['REQUEST_METHOD'] === 'POST') 

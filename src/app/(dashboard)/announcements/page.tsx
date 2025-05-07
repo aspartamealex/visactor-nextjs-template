@@ -15,9 +15,16 @@ interface Announcement
     people: string;
 }
 
+interface AnnouncementsResponse 
+{
+    total: number;
+    announcements: Announcement[];
+}
+
 export default function AnnouncementsPage() 
 {
     const [announcements, setAnnouncements] = useState<Announcement[]>([]);
+    const [total, setTotal] = useState<number>(0);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const router = useRouter();
@@ -45,15 +52,17 @@ export default function AnnouncementsPage()
             {
                 throw new Error("Failed to fetch announcements");
             }
-            const data = await response.json();
+            const data: AnnouncementsResponse = await response.json();
             console.log("API Response:", data);
             setAnnouncements(data.announcements || []);
+            setTotal(data.total || 0);
         } 
         catch (err) 
         {
             console.error("Fetch error:", err);
             setError(err instanceof Error ? err.message : "An error occurred");
             setAnnouncements([]);
+            setTotal(0);
         } 
         finally 
         {
@@ -79,7 +88,10 @@ export default function AnnouncementsPage()
     return (
         <div className="container mx-auto py-6">
             <div className="flex justify-between items-center mb-6">
-                <h1 className="text-2xl font-bold">Announcements</h1>
+                <div>
+                    <h1 className="text-2xl font-bold">Announcements</h1>
+                    <p className="text-gray-500">Total announcements: {total}</p>
+                </div>
                 <Button onClick={handleCreate} className="flex items-center gap-2">
                     <Plus className="h-4 w-4" />
                     New Announcement
