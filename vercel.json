@@ -1,7 +1,8 @@
 {
     "functions": {
       "api/*.php": {
-        "runtime": "vercel-php@0.7.3"
+        "runtime": "vercel-php@0.7.3",
+        "excludeFiles": "{public/**,uploads/**,vendor/**,node_modules/**,*.cache,*.zip,*.json,.next/**}"
       }
     },
     "routes": [
@@ -10,3 +11,4 @@
       { "src": "/(.*)", "dest": "/$1" }
     ]
   }
+  
