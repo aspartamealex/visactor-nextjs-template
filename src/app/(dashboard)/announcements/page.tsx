@@ -37,10 +37,13 @@ export default function AnnouncementsPage()
                 throw new Error("Failed to fetch announcements");
             }
             const data = await response.json();
+            console.log("API Response:", data);
+            console.log("Is Array?", Array.isArray(data));
             setAnnouncements(Array.isArray(data) ? data : []);
         } 
         catch (err) 
         {
+            console.error("Fetch error:", err);
             setError(err instanceof Error ? err.message : "An error occurred");
             setAnnouncements([]);
         } 

@@ -88,6 +88,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET')
             $announcements[] = $row;
         }
         
+        // Debug log
+        error_log("Announcements data: " . print_r($announcements, true));
+        
         echo json_encode($announcements);
     }
 } 
