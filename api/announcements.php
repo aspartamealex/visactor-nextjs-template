@@ -83,31 +83,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET')
     } 
     else 
     {
-        // First get total count
+        // Get total count
         $countQuery = "SELECT COUNT(*) as total FROM announcements";
         $countResult = $db->query($countQuery);
         $totalCount = $countResult->fetch_assoc()['total'];
-        
-        // Then get all announcements
+
+        // Get announcements list
         $query = "SELECT id, title, content, date, people FROM announcements ORDER BY date DESC";
-        $stmt = $db->prepare($query);
-        if (!$stmt) 
-        {
-            error_log("Prepare failed: " . $db->error);
-            http_response_code(500);
-            echo json_encode(['error' => 'Failed to prepare statement']);
-            exit;
-        }
-        
-        if (!$stmt->execute()) 
-        {
-            error_log("Execute failed: " . $stmt->error);
-            http_response_code(500);
-            echo json_encode(['error' => 'Failed to execute statement']);
-            exit;
-        }
-        
-        $result = $stmt->get_result();
+        $result = $db->query($query);
         $announcements = [];
         
         while ($row = $result->fetch_assoc()) 

@@ -8,11 +8,13 @@
     "routes": [
       { 
         "src": "/api/announcements", 
-        "dest": "/api/announcements.php" 
+        "dest": "/api/announcements.php",
+        "continue": true
       },
       { 
         "src": "/api/(.*)\\.php", 
-        "dest": "/api/$1.php" 
+        "dest": "/api/$1.php",
+        "continue": true
       },
       { 
         "handle": "filesystem" 
