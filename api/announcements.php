@@ -18,15 +18,8 @@ error_log("Request headers: " . print_r(getallheaders(), true));
 
 // Parse DATABASE_URL
 $db_url = getenv('DATABASE_URL') ?: 'mysql://root:kyXWJswlAqXfarmmmhmkDuqDpJEuGoRx@interchange.proxy.rlwy.net:15918/railway';
-if (!$db_url) 
-{
-    http_response_code(500);
-    echo json_encode(['error' => 'DATABASE_URL not set']);
-    exit;
-}
-
-// Parse the URL
 $url = parse_url($db_url);
+
 if (!$url || !isset($url['host'], $url['user'], $url['pass'], $url['path'])) 
 {
     http_response_code(500);

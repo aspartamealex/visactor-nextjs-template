@@ -38,28 +38,24 @@ export default function AnnouncementsPage()
     {
         try 
         {
-            console.log("Fetching announcements...");
             const response = await fetch("/api/announcements.php", {
                 credentials: "include",
                 headers: {
                     "Accept": "application/json"
                 }
             });
-            console.log("Response status:", response.status);
-            console.log("Response headers:", Object.fromEntries(response.headers.entries()));
             
             if (!response.ok) 
             {
                 throw new Error("Failed to fetch announcements");
             }
+            
             const data: AnnouncementsResponse = await response.json();
-            console.log("API Response:", data);
             setAnnouncements(data.announcements || []);
             setTotal(data.total || 0);
         } 
         catch (err) 
         {
-            console.error("Fetch error:", err);
             setError(err instanceof Error ? err.message : "An error occurred");
             setAnnouncements([]);
             setTotal(0);
@@ -99,7 +95,7 @@ export default function AnnouncementsPage()
             </div>
 
             <div className="grid gap-6">
-                {announcements.map((announcement) => (
+                {announcements.map((announcement: Announcement) => (
                     <Card key={announcement.id}>
                         <CardHeader>
                             <CardTitle className="flex items-center justify-between">
