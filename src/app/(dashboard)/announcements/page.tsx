@@ -31,7 +31,16 @@ export default function AnnouncementsPage()
     {
         try 
         {
-            const response = await fetch("/api/announcements.php");
+            console.log("Fetching announcements...");
+            const response = await fetch("/api/announcements.php", {
+                credentials: "include",
+                headers: {
+                    "Accept": "application/json"
+                }
+            });
+            console.log("Response status:", response.status);
+            console.log("Response headers:", Object.fromEntries(response.headers.entries()));
+            
             if (!response.ok) 
             {
                 throw new Error("Failed to fetch announcements");
