@@ -1,5 +1,24 @@
 {
-    "regions": ["syd1"],
-    "buildCommand": "next build"
-  }
+    "version": 2,
+    "builds": [
+        {
+            "src": "api/**/*.php",
+            "use": "@vercel/php"
+        },
+        {
+            "src": "package.json",
+            "use": "@vercel/next"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/api/(.*)",
+            "dest": "/api/$1"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "/$1"
+        }
+    ]
+}
   
