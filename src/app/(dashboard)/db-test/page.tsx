@@ -27,7 +27,7 @@ export default function DbTestPage()
         {
             try 
             {
-                const response = await fetch('http://localhost:8000/api/db-test.php');
+                const response = await fetch('/api/db-test.php');
                 if (!response.ok) 
                 {
                     throw new Error(`HTTP error! status: ${response.status}`);

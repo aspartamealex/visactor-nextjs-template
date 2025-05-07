@@ -31,7 +31,7 @@ export default function Dashboard()
     {
       try 
       {
-        const response = await fetch('http://localhost:8000/api/login.php', 
+        const response = await fetch('/api/login.php', 
         {
           method: 'HEAD',
           cache: 'no-cache'
@@ -75,7 +75,7 @@ export default function Dashboard()
 
     try 
     {
-      const response = await fetch("http://localhost:8000/api/login.php", 
+      const response = await fetch("/api/login.php", 
       {
         method: "POST",
         headers: 

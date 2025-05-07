@@ -31,7 +31,7 @@ export default function CreateAnnouncementPage()
         try 
         {
             console.log("Sending data:", data); // Debug log
-            const response = await fetch("http://localhost:8000/api/announcements.php", 
+            const response = await fetch("/api/announcements.php", 
             {
                 method: "POST",
                 headers: 

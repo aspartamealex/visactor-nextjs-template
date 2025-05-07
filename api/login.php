@@ -1,6 +1,6 @@
 <?php
 // Set CORS headers to allow requests from the frontend
-header("Access-Control-Allow-Origin: http://localhost:3000");
+header("Access-Control-Allow-Origin: https://stratabuildingmanager-alexs-projects-4a823196.vercel.app");
 header("Access-Control-Allow-Methods: POST, OPTIONS, HEAD");
 header("Access-Control-Allow-Headers: Content-Type");
 header("Access-Control-Allow-Credentials: true");

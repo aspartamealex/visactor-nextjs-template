@@ -29,7 +29,7 @@ export default function OwnersPage() {
   useEffect(() => {
     const fetchOwners = async () => {
       try {
-        const response = await fetch("http://localhost:8000/api/owners.php");
+        const response = await fetch("/api/owners.php");
         if (!response.ok) {
           throw new Error("Failed to fetch owners");
         }

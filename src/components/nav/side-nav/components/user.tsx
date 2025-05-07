@@ -34,7 +34,7 @@ export default function User()
         // Clear user data from localStorage
         localStorage.removeItem("user");
         // Clear session cookie by making a request to logout endpoint
-        fetch("http://localhost:8000/api/logout.php", 
+        fetch("/api/logout.php", 
         {
             method: "POST",
             credentials: "include"
@@ -44,7 +44,7 @@ export default function User()
             // Reset user data state
             setUserData(null);
             // Redirect to root URL
-            window.location.href = "http://localhost:3000/";
+            window.location.href = "/";
         });
     };
 

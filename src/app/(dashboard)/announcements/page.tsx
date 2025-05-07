@@ -31,7 +31,7 @@ export default function AnnouncementsPage()
     {
         try 
         {
-            const response = await fetch("http://localhost:8000/api/announcements.php");
+            const response = await fetch("/api/announcements.php");
             if (!response.ok) 
             {
                 throw new Error("Failed to fetch announcements");

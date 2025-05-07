@@ -4,7 +4,7 @@ export async function GET()
 {
     try 
     {
-        const response = await fetch('http://localhost:8000/api/db-test.php');
+        const response = await fetch('/api/db-test.php');
         const data = await response.json();
         return NextResponse.json(data);
     } 
