@@ -1,0 +1,150 @@
+JIRA and Teamwork
+- Which of the following is a benefit of JIRA in teamwork?
+  ✓ Fostering efficient teamwork
+  ✗ Promoting individual competition
+  ✗ Restricting communication
+  ✗ Encouraging solo work
+
+- In addition to task tracking, which of the following is best supported by JIRA?
+  ✓ Seamless Collaboration
+  ✗ Social Media Management
+  ✗ Video Editing
+  ✗ Graphic Design
+
+Git and Version Control
+- Git requires files to be stored in a central location.
+  ✗ True
+  ✓ False
+
+- You cannot rewind and fast forward back and forth between commits
+  ✗ True
+  ✓ False
+
+- What is the purpose of "pushing changes back to the repository" in Git?
+  ✓ Sharing changes with collaborators
+  ✗ Undoing the last commit
+  ✗ Storing changes only on the local machine
+  ✗ Ignoring changes in the working directory
+
+- What does the git diff --cached command do in Git?
+  ✓ Shows the differences between the staging area and the last committed version
+  ✗ Compares the working directory with the last committed version
+  ✗ Lists all the branches in the local repository
+  ✗ Displays the changes between two specified commits
+
+- What does "HEAD" represent in Git?
+  ✓ The current state on GitHub
+  ✗ The latest commit on the local machine
+  ✗ The first commit in the repository
+  ✗ The working directory in Git
+
+- What does the git diff command do?
+  ✓ Displays changes between commits
+  ✗ Resets the changes in the repository
+  ✗ Compares the working directory with the staging area
+  ✗ Creates a new branch in Git
+
+Communication
+- All groups can be considered to be teams.
+  ✗ True
+  ✓ False
+
+- Communication is a process by which information is exchanged between individuals through a common system of symbols, signs, or behaviour?
+  ✓ True
+  ✗ False
+
+- An example of the Transaction model of communication is:
+  ✓ A conversation in a car
+  ✗ Drawing a map for a lost tourist
+  ✗ A text message
+  ✗ A lecture
+
+LaTeX
+- A makefile contains a set of files.
+  ✗ True
+  ✓ False
+
+- Which of the following is the syntax to create a numbered list in markdown?
+  ✓ Write the number one before each item in the list
+  ✗ Add an exclamation point for each item in the list
+  ✗ Add a dash mark symbol for each item in the list
+  ✗ Add one asterisk mark symbol for each item in the list
+
+- Comments in a LaTeX document begin with the following character(s):
+  ✓ %
+  ✗ \\
+  ✗ \comment
+  ✗ $
+
+- Which category of LaTeX features includes tools like \label and \ref for referencing sections or figures within a document?
+  ✓ Cross-referencing
+  ✗ Graphics
+  ✗ Macros
+  ✗ Footnotes/margin notes
+  ✗ Floating figures
+
+- LaTeX macros are only used for adding hyperlinks in documents.
+  ✗ True
+  ✓ False
+
+Tech Stack and Development
+- A tech stack is limited to programming languages and does not include other technologies.
+  ✗ True
+  ✓ False
+
+- A tech stack typically consists of which of the following:
+  ✓ Front End tools
+  ✓ Programming Languages
+  ✓ A Database
+  ✓ Back End tools
+  ✓ Applications connected via API
+  ✓ Frameworks
+
+Ethics and Professional Conduct
+- Hacking is always wrong
+  ✗ True
+  ✓ False
+
+- The ACS Code of Professional Conduct requires that IT professionals upgrade their skills continuously
+  ✓ True
+  ✗ False
+
+- Information on a patent is public once the patent is registered
+  ✓ True
+  ✗ False
+
+- You can avoid plagiarism issues by ensuring everything you use is paraphrased
+  ✗ True
+  ✓ False
+
+- Which of the following values are part of the ACS Code of Ethics:
+  ✓ Honesty
+  ✗ Utilitarianism
+  ✗ Norms and customs
+  ✗ Morality
+
+Problem Solving and Complexity
+- Even a very simple system, with a small number of variables and simple rules, can generate quite complex behaviours.
+  ✓ True
+  ✗ False
+
+- When speaking about P-NP problems, P problems are the set of problems whose answers are easy to find.
+  ✓ True
+  ✗ False
+
+- It can be difficult to understand the problem you are trying to solve if the requirements are incomplete?
+  ✓ True
+  ✗ False
+
+Business Models
+- Match the fictional company descriptions to the business models:
+  Shuber (shoe sharing) → Community
+  Spyzonu (free content for email) → Subscription
+  DeadTrees (physical books) → Manufacturer
+  Jack's Links (affiliate marketing) → Advertising
+
+Ethical Frameworks
+- Which of the following describes an ethical framework based on achieving the best outcome for the greatest number of people?
+  ✓ Utilitarianism
+  ✗ Deontology
+  ✗ Egoism 
