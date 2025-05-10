@@ -44,14 +44,14 @@ export const fetchMetrics = async (): Promise<Metric[]> => {
 export const initialMetrics: Metric[] = [
   {
     title: "Current Owners",
-    value: "0",
+    value: "Loading",
   },
   {
     title: "Insuranced Owners",
-    value: "0%",
+    value: "Loading",
   },
   {
     title: "Owners' Levies Paid",
-    value: "0%",
+    value: "Loading",
   },
 ];
